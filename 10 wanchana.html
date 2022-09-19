@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css
+"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  </head>
+  <body style="background-color:rgb(214, 240, 18)">
+      <div class="containter">
+          <form name="form01">
+            <fieldset id="section1">
+                <legend>ข้อมูลผู้สมัครเข้ารับการอบรม</legend>
+                <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label">ชื่อ</label>
+                    <input type="text" id="fname" id="fname" >
+                </div>
+                <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label">สกุล</label>
+                    <input type="text" id="lname" id="lname" >
+                </div>
+                <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <input type="text" id="email" id="email" >
+                </div>
+            </fieldset>
+            <fieldset>
+                 <legend>ข้อมูลการเข้าอบรม</legend>
+                 <label for="course">ค่าหลักสูตรอบรม 3,000</label>
+                 <input type="hidden"  name="course"  value="3000">
+                 <span>ตัวเลือกเพิ่มเติม</span>
+                 <label for="addon01">เสื้อยืด</label>
+                 <input type="checkbox"  name="addon"  id="addon01"  value="400">
+                 <label for="addon02">แก้วน้ำ</label>
+                 <input type="checkbox"  name="addon"  id="addon02"  value="300">
+                 <label for="addon03">งานเลี้ยงอาหารเย็น</label>
+                 <input type="checkbox"  name="addon"  id="addon03"  value="1300">
+            </fieldset> 
+            <input type="button"  name="ok"  value="คำนวณ"  onclick="calculatePrice()">
+            <p id="output"></p>
+        </form>
+    </fieldset>
+
+        <script type="text/javascript">
+            function calculatePrice(){
+                var fname = document.forms["form01"].fname;
+                var lname = document.forms["form01"].lname;
+                var email = document.forms["form01"].email;
+                var output = document.getElementById("output");
+                var course = document.forms["form01"].course;
+                var addon = document.forms["form01"].addon;
+                output.innerHTML = "ข้อมูลผู้สมัครอบรม"+ fname.value + " " + lname.value;
+                output.innerHTML = "email " + email.value;
+                var coursePrice = 0;
+                for(var i=0;i<addon.length;i++){
+                    if(addon[i].checked){
+                        coursePrice += parseInt(addon[i].value);
+                    }
+                }
+                coursePrice += parseInt(course.value);
+                output.innerHTML += "ค่าคอร์สอบรม : " + coursePrice;
+            }
+        </script>
+        </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js
+" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js
+" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  </body>
+</html>
